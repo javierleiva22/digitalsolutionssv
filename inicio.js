@@ -1,19 +1,19 @@
-const left = document.querySelector('.left');
-const right = document.querySelector('.right');
-const container = document.querySelector('.container');
+// Small interactions: mobile nav toggle and year insertion
+document.addEventListener('DOMContentLoaded', function(){
+  var navToggle = document.getElementById('navToggle');
+  var primaryNav = document.getElementById('primaryNav');
+  if(navToggle && primaryNav){
+    navToggle.addEventListener('click', function(){
+      var expanded = this.getAttribute('aria-expanded') === 'true';
+      this.setAttribute('aria-expanded', String(!expanded));
+      if(!expanded){
+        primaryNav.style.display = 'block';
+      } else {
+        primaryNav.style.display = '';
+      }
+    });
+  }
 
-left.addEventListener('mouseenter', () => {
-    container.classList.add('hover-left');
-});
-
-left.addEventListener('mouseleave', () => {
-    container.classList.remove('hover-left');
-});
-
-right.addEventListener('mouseenter', () => {
-    container.classList.add('hover-right');
-});
-
-right.addEventListener('mouseleave', () => {
-    container.classList.remove('hover-right');
+  var elYear = document.getElementById('year');
+  if(elYear) elYear.textContent = new Date().getFullYear();
 });
